@@ -37,7 +37,7 @@ describe('Model postComment methodのテスト', () => {
             body: 'test body'
         };
         const newComment = Comment.postComment(data);
-        assert.deepEqual(newComment, {
+        assert.deepStrictEqual({ ...newComment }, {
             id: newComment.id,
             username: data.username,
             body: data.body,
