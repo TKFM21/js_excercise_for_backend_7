@@ -20,4 +20,8 @@ for (let i = 0; i < 5; i++) {
     comments.push(comment);
 }
 
-module.exports = {};
+module.exports = {
+    findAll: () => {
+        return comments.slice();
+    }
+};
