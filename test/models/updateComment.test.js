@@ -3,7 +3,7 @@ const Comment = require('../../models/commentModel');
 
 describe('Model updateComment method Test', () => {
     it('methodの存在確認', () => {
-        assert.deepEqual(typeof Comment.updateComment, 'function');
+        assert.strictEqual(typeof Comment.updateComment, 'function');
     });
 
     it('idがなかったり、不正な値だったらエラー', () => {
@@ -22,7 +22,7 @@ describe('Model updateComment method Test', () => {
                 Comment.updateComment(failData);
                 assert.fail();
             } catch (error) {
-                assert.deepEqual(error.message, 'idが不正です。（1以上の数値）');
+                assert.strictEqual(error.message, 'idが不正です。（1以上の数値）');
             }
         });
     });
@@ -36,7 +36,7 @@ describe('Model updateComment method Test', () => {
             Comment.updateComment(failData);
             assert.fail();
         } catch (error) {
-            assert.deepEqual(error.message, 'usernameがありません');
+            assert.strictEqual(error.message, 'usernameがありません');
         }
     });
 
@@ -49,7 +49,7 @@ describe('Model updateComment method Test', () => {
             Comment.updateComment(failData);
             assert.fail();
         } catch (error) {
-            assert.deepEqual(error.message, 'bodyがありません');
+            assert.strictEqual(error.message, 'bodyがありません');
         }
     });
 
@@ -63,7 +63,7 @@ describe('Model updateComment method Test', () => {
             Comment.updateComment(failData);
             assert.fail();
         } catch (error) {
-            assert.deepEqual(error.message, 'idに該当するCommentがありません');
+            assert.strictEqual(error.message, 'idに該当するCommentがありません');
         }
     });
 
@@ -84,6 +84,6 @@ describe('Model updateComment method Test', () => {
 
         const comments = Comment.findAll();
         assert.deepStrictEqual(comments[0], updateComment);
-        assert.deepEqual(updateComment.updatedAt > updateComment.createdAt, true);
+        assert.strictEqual(updateComment.updatedAt > updateComment.createdAt, true);
     });
 });
