@@ -10,6 +10,7 @@ router.use((req, res, next) => {
 
 router
     .route('/')
-    .get(controller.getComments);
+    .get(controller.getComments)
+    .post(controller.postComment);
 
 module.exports = router;
