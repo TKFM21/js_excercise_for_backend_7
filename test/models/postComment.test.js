@@ -3,7 +3,7 @@ const Comment = require('../../models/commentModel');
 
 describe('Model postComment methodのテスト', () => {
     it('postCommentメソッドの存在確認', () => {
-        assert.equal(typeof Comment.postComment, 'function');
+        assert.strictEqual(typeof Comment.postComment, 'function');
     });
 
     it('usernameがなかったらエラー', () => {
@@ -14,7 +14,7 @@ describe('Model postComment methodのテスト', () => {
             Comment.postComment(failData);
             assert.fail();
         } catch (error) {
-            assert.equal(error.message, 'usernameがありません');
+            assert.strictEqual(error.message, 'usernameがありません');
         }
     });
 
@@ -26,7 +26,7 @@ describe('Model postComment methodのテスト', () => {
             Comment.postComment(failData);
             assert.fail();
         } catch (error) {
-            assert.equal(error.message, 'bodyがありません');
+            assert.strictEqual(error.message, 'bodyがありません');
         }
     });
 
@@ -45,6 +45,6 @@ describe('Model postComment methodのテスト', () => {
             updatedAt: newComment.updatedAt
         });
         const newComments = Comment.findAll();
-        assert.equal(newComments.length, oldComments.length + 1)
+        assert.strictEqual(newComments.length, oldComments.length + 1)
     });
 });
