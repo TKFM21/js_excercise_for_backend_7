@@ -58,5 +58,17 @@ module.exports = {
         targetComment.body = body;
         targetComment.updatedAt = new Date();
         return targetComment;
+    },
+    removeComment: (id) => {
+        if (typeof id !== 'number' || id < 1 || isNaN(id)) {
+            throw new Error('idが不正です。（1以上の数値）');
+        }
+
+        const targetIndex = comments.findIndex(comment => comment.id === id);
+        if (targetIndex === -1) {
+            throw new Error('idに該当するCommentがありません');
+        }
+        const targetComment = comments.splice(targetIndex, 1)[0];
+        return targetComment;
     }
 };
