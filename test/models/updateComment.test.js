@@ -83,7 +83,7 @@ describe('Model updateComment method Test', () => {
         });
 
         const comments = Comment.findAll();
-        assert.deepEqual(comments[0], updateComment);
+        assert.deepStrictEqual(comments[0], updateComment);
         assert.equal(updateComment.updatedAt > updateComment.createdAt, true);
     });
 });
