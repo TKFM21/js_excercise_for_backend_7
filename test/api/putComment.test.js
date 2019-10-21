@@ -30,7 +30,7 @@ describe('API PUT /api/comments/:id', () => {
         });
     });
 
-    it('存在しないidの場合400エラー', async () => {
+    it('存在しないidの場合404エラー', async () => {
         const failData = {
             username: 'test',
             body: 'body'
@@ -39,7 +39,7 @@ describe('API PUT /api/comments/:id', () => {
         const response = await requestHelper.request({
             method: 'put',
             endPoint: `/api/comments/${INVALID_ID}`,
-            statusCode: 400
+            statusCode: 404
         }).send(failData);
         assert.deepStrictEqual(response.body, {
             message: 'idに該当するCommentがありません'

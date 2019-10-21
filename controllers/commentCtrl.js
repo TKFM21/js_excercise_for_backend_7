@@ -22,7 +22,11 @@ module.exports = {
             const putComment = Comment.updateComment({id, username, body});
             res.status(200).json(putComment);
         } catch (error) {
-            res.status(400).json({message: error.message});
+            if (error.message === 'idに該当するCommentがありません') {
+                res.status(404).json({message: error.message});
+            } else {
+                res.status(400).json({message: error.message});
+            }
         }
     }
 };
